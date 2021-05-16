@@ -1,0 +1,30 @@
+nav {
+  text-align: center;
+  background: blueify(10);
+  height: 80px;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  border-radius: 8px;
+
+  h3 {
+    font-weight: 300;
+    font-size: 14px;
+    position: relative;
+    bottom: 25px;
+  }
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  position: relative;
+  bottom: 30px;
+  background: blueify(15);
+
+  p {
+    cursor: pointer;
+    font-size: 15px;
+  }
+}

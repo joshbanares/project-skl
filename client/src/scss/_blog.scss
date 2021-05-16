@@ -1,0 +1,20 @@
+.blogs {
+  width: 500px;
+  align-self: center;
+}
+
+.blog {
+  margin-bottom: 30px;
+  background: $dgray;
+  padding: 1px 10px;
+  border-radius: 5px;
+
+  h4 {
+    color: $blue;
+  }
+
+  p:nth-child(3) {
+    color: $blue;
+    cursor: pointer;
+  }
+}

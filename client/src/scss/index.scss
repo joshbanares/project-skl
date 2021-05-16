@@ -1,0 +1,38 @@
+@import 'config';
+@import 'nav';
+@import 'header';
+@import 'form';
+@import 'blog';
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {
+  background: $ddgray;
+  font-family: 'Ubuntu Mono', monospace;
+  color: #f9f9f9;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: auto;
+}
+
+main {
+  width: 700px;
+  height: auto;
+  border-left: 4px solid $gray;
+  border-right: 4px solid $gray;
+  margin-top: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+::selection {
+  background: darken($blue, 5%);
+  color: #f9f9f9;
+}
+
+@import 'footer';
+@import 'mediaQuery';

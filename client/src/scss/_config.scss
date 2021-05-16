@@ -1,0 +1,8 @@
+$blue: #7289da;
+$gray: #99aab5;
+$dgray: #2c2f33;
+$ddgray: #23272a;
+
+@function blueify($percent: 100%) {
+  @return darken($blue, $percent);
+}
