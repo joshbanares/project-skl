@@ -6,6 +6,9 @@ nav {
   place-items: center;
   width: 100%;
   border-radius: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 
   h3 {
     font-weight: 300;

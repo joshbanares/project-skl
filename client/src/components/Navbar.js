@@ -6,7 +6,7 @@ function Navbar() {
       <div className="navigation">
         <p>about</p>
         <p>portfolio</p>
-        <p>social</p>
+        <p>rules</p>
       </div>
     </nav>
   );
