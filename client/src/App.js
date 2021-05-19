@@ -1,38 +1,77 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import Navbar from './components/Navbar';
 import Form from './components/Form';
-import Blogs from './components/Blogs';
+import Posts from './components/Posts';
 import ToggleForm from './components/ToggleForm';
 
 function App() {
   const [showForm, setShowForm] = useState(false);
-  const [data, setData] = useState([
-    {
-      username: 'John Doe',
-      msg: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      likes: 4,
-    },
-    {
-      username: 'Jane Doe',
-      msg: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      likes: 7,
-    },
-    {
-      username: 'anonymous',
-      msg: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-      likes: 2,
-    },
-  ]);
+  const [sharedPost, setSharedPost] = useState([]);
+  const [username, setUsername] = useState('');
+  const [likes, setLikes] = useState('');
+  const [post, setPost] = useState('');
+
+  const getSharedPost = () => {
+    axios
+      .get('/api')
+      .then((res) => {
+        const data = res.data;
+        setSharedPost(data);
+      })
+      .catch(() => {
+        alert('Error retrieving data!');
+      });
+  };
+
+  useEffect(() => {
+    getSharedPost();
+    console.log('Data has been received!');
+  }, []);
+
+  const submit = (e) => {
+    e.preventDefault();
+
+    const payload = {
+      username,
+      userPost: post,
+    };
+
+    axios({
+      url: '/api/save',
+      method: 'POST',
+      data: payload,
+    })
+      .then(() => {
+        resetInput();
+        getSharedPost();
+      })
+      .catch(() => {
+        console.log('Internal server error!');
+      });
+  };
+
+  const resetInput = () => {
+    setUsername('');
+    setPost('');
+  };
 
   return (
     <main>
       <Navbar />
       {showForm ? (
-        <Form setShowForm={setShowForm} />
+        <Form
+          setShowForm={setShowForm}
+          setUsername={setUsername}
+          setPost={setPost}
+          username={username}
+          post={post}
+          submit={submit}
+        />
       ) : (
         <ToggleForm setShowForm={setShowForm} />
       )}
-      <Blogs data={data} />
+      <Posts sharedPost={sharedPost} likes={likes} />
     </main>
   );
 }

@@ -6,6 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
+    "client": "cd client && yarn start",
+    "dev": "concurrently -n 'server,client' \"nodemon server.js\" \"yarn client\"",
     "install-client": "cd client && yarn install",
     "build": "cd client && yarn build",
     "heroku-postbuild": "yarn install-client && yarn build"
@@ -17,7 +19,8 @@
     "@material-ui/core": "^4.11.4",
     "axios": "^0.21.1",
     "express": "^4.17.1",
-    "mongoose": "^5.12.9"
+    "mongoose": "^5.12.9",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "concurrently": "^6.1.0",
