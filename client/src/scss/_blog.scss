@@ -1,13 +1,15 @@
-.blogs {
+.posts {
   width: 700px;
   align-self: center;
+  margin-bottom: 100px;
 }
 
-.blog {
+.post {
   margin-bottom: 30px;
-  background: $dgray;
+  background: lighten($dgray, 3%);
   padding: 1px 10px;
   border-radius: 5px;
+  border-left: $blue 3px solid;
 
   h4 {
     color: $blue;

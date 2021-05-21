@@ -15,20 +15,16 @@ router.get('/', (req, res) => {
 });
 
 router.post('/save', (req, res) => {
-  console.log('Body: ', req.body);
+  // console.log('Body: ', req.body);
   const data = req.body;
-
   const newSharedPost = new sharedPost(data);
 
   newSharedPost.save((err) => {
     if (err) {
       res.status(500).json({ msg: 'Sorry, internal server error!' });
-      return;
+    } else {
+      res.json({ msg: 'data saved!' });
     }
-
-    return res.json({
-      msg: 'Data has been successfully saved!',
-    });
   });
 });
 

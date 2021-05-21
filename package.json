@@ -20,7 +20,8 @@
     "axios": "^0.21.1",
     "express": "^4.17.1",
     "mongoose": "^5.12.9",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
     "concurrently": "^6.1.0",

@@ -4,12 +4,12 @@ import Navbar from './components/Navbar';
 import Form from './components/Form';
 import Posts from './components/Posts';
 import ToggleForm from './components/ToggleForm';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [sharedPost, setSharedPost] = useState([]);
   const [username, setUsername] = useState('');
-  const [likes, setLikes] = useState('');
   const [post, setPost] = useState('');
 
   const getSharedPost = () => {
@@ -33,8 +33,9 @@ function App() {
     e.preventDefault();
 
     const payload = {
-      username,
+      username: !username.length ? 'anonymous' : username,
       userPost: post,
+      likes: 0,
     };
 
     axios({
@@ -71,7 +72,7 @@ function App() {
       ) : (
         <ToggleForm setShowForm={setShowForm} />
       )}
-      <Posts sharedPost={sharedPost} likes={likes} />
+      <Posts sharedPost={sharedPost} />
     </main>
   );
 }

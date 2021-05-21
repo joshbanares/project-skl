@@ -5,8 +5,16 @@ function Navbar() {
       <h3>project: share ko lang</h3>
       <div className="navigation">
         <p>about</p>
-        <p>portfolio</p>
-        <p>rules</p>
+        <a href="https://xfi.sytes.net.com" rel="author" target="_blank">
+          portfolio
+        </a>
+        <a
+          href="https://github.com/joshbanares/project-skl"
+          rel="author"
+          target="_blank"
+        >
+          github
+        </a>
       </div>
     </nav>
   );

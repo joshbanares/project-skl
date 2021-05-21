@@ -1,6 +1,5 @@
 @import 'config';
 @import 'nav';
-@import 'header';
 @import 'form';
 @import 'blog';
 
@@ -21,6 +20,7 @@ body {
   width: 100%;
   height: auto;
   overflow-y: hidden;
+  box-sizing: border-box;
 }
 
 main {
@@ -34,8 +34,8 @@ main {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
-  // background: #23272a;
-  background: rgba(0, 0, 0, 0.8);
+  background: #23272a;
+  // background: rgba(0, 0, 0, 0.8);
 }
 
 ::selection {
