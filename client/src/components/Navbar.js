@@ -2,10 +2,10 @@ function Navbar() {
   return (
     <nav>
       <h1>Project:SKL</h1>
-      <h3>project: share ko lang</h3>
+      <h3>Copyright © 2021 88XFi Websites All Rights Reserved.</h3>
       <div className="navigation">
         <p>about</p>
-        <a href="https://xfi.sytes.net.com" rel="author" target="_blank">
+        <a href="https://xfi.sytes.net" rel="author" target="_blank">
           portfolio
         </a>
         <a

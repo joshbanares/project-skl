@@ -5,14 +5,14 @@ nav {
   display: grid;
   place-items: center;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 3px;
   position: sticky;
   top: 0;
   z-index: 10;
 
   h3 {
     font-weight: 300;
-    font-size: 14px;
+    font-size: 13px;
     position: relative;
     bottom: 25px;
   }
@@ -20,6 +20,7 @@ nav {
 
 .navigation {
   display: flex;
+  align-items: center;
   justify-content: space-evenly;
   width: 100%;
   position: relative;
@@ -31,4 +32,13 @@ nav {
     font-size: 15px;
     color: #f9f9f9;
   }
+}
+
+.copyright {
+  position: relative;
+  background: blueify(20);
+  font-size: 12px;
+  width: 100%;
+  bottom: 45px;
+  padding: 15px;
 }
