@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Form from './components/Form';
 import Posts from './components/Posts';
 import ToggleForm from './components/ToggleForm';
+import About from './routes/About';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -58,22 +59,32 @@ function App() {
   };
 
   return (
-    <main>
-      <Navbar />
-      {showForm ? (
-        <Form
-          setShowForm={setShowForm}
-          setUsername={setUsername}
-          setPost={setPost}
-          username={username}
-          post={post}
-          submit={submit}
-        />
-      ) : (
-        <ToggleForm setShowForm={setShowForm} />
-      )}
-      <Posts sharedPost={sharedPost} />
-    </main>
+    <Router>
+      <main>
+        <Navbar />
+        <Switch>
+          <Route exact path="/">
+            {showForm ? (
+              <Form
+                setShowForm={setShowForm}
+                setUsername={setUsername}
+                setPost={setPost}
+                username={username}
+                post={post}
+                submit={submit}
+              />
+            ) : (
+              <ToggleForm setShowForm={setShowForm} />
+            )}
+            <Posts sharedPost={sharedPost} />
+          </Route>
+
+          <Route path="/about">
+            <About />
+          </Route>
+        </Switch>
+      </main>
+    </Router>
   );
 }
 

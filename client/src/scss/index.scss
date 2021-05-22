@@ -21,6 +21,7 @@ body {
   height: auto;
   overflow-y: hidden;
   box-sizing: border-box;
+  position: absolute;
 }
 
 main {
@@ -29,13 +30,14 @@ main {
   border-left: 4px solid $gray;
   border-right: 4px solid $gray;
   border-bottom: 4px solid $gray;
-  margin-top: 20px;
-  border-radius: 8px;
   display: flex;
+  margin-top: 10px;
+  border-radius: 8px;
   flex-direction: column;
   overflow-y: scroll;
   background: #23272a;
   -webkit-tap-highlight-color: transparent;
+  position: relative;
   // background: rgba(0, 0, 0, 0.8);
 }
 

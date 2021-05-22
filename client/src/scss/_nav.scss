@@ -5,10 +5,10 @@ nav {
   display: grid;
   place-items: center;
   width: 100%;
-  border-radius: 3px;
   position: sticky;
   top: 0;
   z-index: 10;
+  border-radius: 2px;
 
   h3 {
     font-weight: 300;
@@ -26,6 +26,7 @@ nav {
   position: relative;
   bottom: 30px;
   background: blueify(15);
+  padding: 10px;
 
   a {
     cursor: pointer;

@@ -20,3 +20,22 @@
     cursor: pointer;
   }
 }
+
+.about {
+  display: grid;
+  place-items: center;
+  margin-top: 40px;
+
+  h1 {
+    font-size: 25px;
+  }
+
+  a {
+    color: #f9f9f9;
+    transition: 0.3s;
+
+    &:hover {
+      color: $blue;
+    }
+  }
+}
