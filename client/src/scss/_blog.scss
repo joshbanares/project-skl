@@ -16,8 +16,7 @@
   }
 
   p:nth-child(3) {
-    color: $blue;
-    cursor: pointer;
+    color: $gray;
   }
 }
 
@@ -26,8 +25,19 @@
   place-items: center;
   margin-top: 40px;
 
-  h1 {
-    font-size: 25px;
+  .about-txt {
+    text-align: justify;
+    padding: 20px;
+    width: 400px;
+
+    p:first-child {
+      font-style: italic;
+    }
+
+    p:last-child {
+      font-style: italic;
+      color: $blue;
+    }
   }
 
   a {
