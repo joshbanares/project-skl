@@ -21,7 +21,7 @@ function App() {
         setSharedPost(data);
       })
       .catch(() => {
-        alert('Error retrieving data!');
+        console.log('Error retrieving data!');
       });
   };
 
