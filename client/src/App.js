@@ -12,6 +12,7 @@ function App() {
   const [sharedPost, setSharedPost] = useState([]);
   const [username, setUsername] = useState('');
   const [post, setPost] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
   const getSharedPost = () => {
     axios
@@ -23,6 +24,8 @@ function App() {
       .catch(() => {
         console.log('Error retrieving data!');
       });
+
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -63,21 +66,25 @@ function App() {
       <main>
         <Navbar />
         <Switch>
-          <Route exact path="/">
-            {showForm ? (
-              <Form
-                setShowForm={setShowForm}
-                setUsername={setUsername}
-                setPost={setPost}
-                username={username}
-                post={post}
-                submit={submit}
-              />
-            ) : (
-              <ToggleForm setShowForm={setShowForm} />
-            )}
-            <Posts sharedPost={sharedPost} />
-          </Route>
+          {isLoading ? (
+            <div className="loader">loading...</div>
+          ) : (
+            <Route exact path="/">
+              {showForm ? (
+                <Form
+                  setShowForm={setShowForm}
+                  setUsername={setUsername}
+                  setPost={setPost}
+                  username={username}
+                  post={post}
+                  submit={submit}
+                />
+              ) : (
+                <ToggleForm setShowForm={setShowForm} />
+              )}
+              <Posts sharedPost={sharedPost} />
+            </Route>
+          )}
 
           <Route path="/about">
             <About />

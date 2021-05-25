@@ -46,5 +46,13 @@ main {
   color: #f9f9f9;
 }
 
+.loader {
+  position: relative;
+  top: 150px;
+  font-size: 20px;
+  display: grid;
+  place-items: center;
+}
+
 @import 'footer';
 @import 'mediaQuery';
