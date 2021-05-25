@@ -6,21 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "client": "cd .. && cd client && yarn start",
-    "dev": "concurrently -n 'server,client' \"nodemon server.js\" \"yarn client\"",
-    "install-client": "cd .. && cd client && yarn install",
-    "build": "cd .. && cd client && yarn build",
-    "heroku-postbuild": "yarn install-client && yarn build"
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.12.11",
-    "morgan": "^1.10.0",
-    "react-router-dom": "^5.2.0"
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "concurrently": "^6.1.0",

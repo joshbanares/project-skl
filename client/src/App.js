@@ -15,7 +15,7 @@ function App() {
 
   const getSharedPost = () => {
     axios
-      .get('/api')
+      .get('https://project-skl-backend.herokuapp.com/api')
       .then((res) => {
         const data = res.data;
         setSharedPost(data);
@@ -40,7 +40,7 @@ function App() {
     };
 
     axios({
-      url: '/api/save',
+      url: 'https://project-skl-backend.herokuapp.com/api/save',
       method: 'POST',
       data: payload,
     })
