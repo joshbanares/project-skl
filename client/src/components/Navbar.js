@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function Navbar() {
   return (
     <nav>
-      <h1>Project:SKL BETA</h1>
+      <h1>Project:SKL Beta!</h1>
       <h3>Copyright © 2021 88XFi Websites All Rights Reserved.</h3>
       <div className="navigation">
         <Link to="/about">about</Link>

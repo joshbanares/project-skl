@@ -1,7 +1,16 @@
 import SendIcon from '@material-ui/icons/Send';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
-function Form({ setShowForm, setUsername, setPost, username, post, submit }) {
+function Form({
+  setShowForm,
+  setUsername,
+  setPost,
+  username,
+  post,
+  submit,
+  sharing,
+  setSharing,
+}) {
   return (
     <form spellCheck="false" onSubmit={submit}>
       <HighlightOffIcon onClick={() => setShowForm(false)} />
@@ -24,10 +33,14 @@ function Form({ setShowForm, setUsername, setPost, username, post, submit }) {
       </div>
 
       <div className="send">
-        <div className="submit">
-          <input type="submit" value="share" />
-          <SendIcon style={{ fontSize: 15 }} />
-        </div>
+        {sharing ? (
+          <div className="sharing">sharing post...</div>
+        ) : (
+          <div className="submit">
+            <input type="submit" value="share" />
+            <SendIcon style={{ fontSize: 15 }} />
+          </div>
+        )}
       </div>
     </form>
   );

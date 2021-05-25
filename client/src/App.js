@@ -13,6 +13,7 @@ function App() {
   const [username, setUsername] = useState('');
   const [post, setPost] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [sharing, setSharing] = useState(false);
 
   const getSharedPost = () => {
     axios
@@ -20,12 +21,11 @@ function App() {
       .then((res) => {
         const data = res.data;
         setSharedPost(data);
+        setIsLoading(false);
       })
       .catch(() => {
         console.log('Error retrieving data!');
       });
-
-    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -35,10 +35,11 @@ function App() {
 
   const submit = (e) => {
     e.preventDefault();
+    setSharing(true);
 
     const payload = {
       username: !username.length ? 'anonymous' : username,
-      userPost: post,
+      userPost: !post.length ? 'I am a 🤡!' : post,
       likes: 0,
     };
 
@@ -50,6 +51,7 @@ function App() {
       .then(() => {
         resetInput();
         getSharedPost();
+        setSharing(false);
       })
       .catch(() => {
         console.log('Internal server error!');
@@ -78,6 +80,8 @@ function App() {
                   username={username}
                   post={post}
                   submit={submit}
+                  sharing={sharing}
+                  setSharing={setSharing}
                 />
               ) : (
                 <ToggleForm setShowForm={setShowForm} />
