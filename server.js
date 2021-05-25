@@ -7,10 +7,14 @@ const PORT = process.env.PORT || 8080;
 
 const routes = require('./routes/api');
 
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  process.env.MONGODB_URI ||
+    'mongodb+srv://joshxfi:Test08qq@xfidb.jdq15.mongodb.net/projectSKL?retryWrites=true&w=majority',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  }
+);
 
 mongoose.connection.on('connected', () => {
   console.log('Mongoose is connected!');
