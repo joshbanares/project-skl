@@ -31,7 +31,7 @@ function Form(props) {
         ></textarea>
         <div
           className="max-char"
-          style={{ color: maxChar == 200 && '#ED1D24' }}
+          style={{ color: maxChar === 200 && '#ED1D24' }}
         >
           {maxChar}/200
         </div>
