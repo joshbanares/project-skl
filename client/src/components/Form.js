@@ -1,5 +1,6 @@
 import SendIcon from '@material-ui/icons/Send';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 function Form({
   setShowForm,
@@ -9,11 +10,10 @@ function Form({
   post,
   submit,
   sharing,
-  setSharing,
 }) {
   return (
     <form spellCheck="false" onSubmit={submit}>
-      <HighlightOffIcon onClick={() => setShowForm(false)} />
+      <HighlightOffIcon className="close" onClick={() => setShowForm(false)} />
       <div className="input">
         <label>username</label> <br />
         <input
@@ -34,7 +34,7 @@ function Form({
 
       <div className="send">
         {sharing ? (
-          <div className="sharing">sharing post...</div>
+          <CircularProgress className="submit-loader" />
         ) : (
           <div className="submit">
             <input type="submit" value="share" />

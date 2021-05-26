@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Form from './components/Form';
 import Posts from './components/Posts';
 import ToggleForm from './components/ToggleForm';
 import About from './routes/About';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
   const [showForm, setShowForm] = useState(false);
@@ -35,27 +36,31 @@ function App() {
 
   const submit = (e) => {
     e.preventDefault();
-    setSharing(true);
 
     const payload = {
       username: !username.length ? 'anonymous' : username,
-      userPost: !post.length ? 'I am a 🤡!' : post,
+      userPost: post,
       likes: 0,
     };
 
-    axios({
-      url: 'https://project-skl-backend.herokuapp.com/api/save',
-      method: 'POST',
-      data: payload,
-    })
-      .then(() => {
-        resetInput();
-        getSharedPost();
-        setSharing(false);
+    if (!post.length) {
+      return;
+    } else {
+      setSharing(true);
+      axios({
+        url: 'https://project-skl-backend.herokuapp.com/api/save',
+        method: 'POST',
+        data: payload,
       })
-      .catch(() => {
-        console.log('Internal server error!');
-      });
+        .then(() => {
+          resetInput();
+          getSharedPost();
+          setSharing(false);
+        })
+        .catch(() => {
+          console.log('Internal server error!');
+        });
+    }
   };
 
   const resetInput = () => {
@@ -69,7 +74,10 @@ function App() {
         <Navbar />
         <Switch>
           {isLoading ? (
-            <div className="loader">loading...</div>
+            <div className="loader">
+              <CircularProgress color="primary" />
+              <p>this can take up to 15 sec...</p>
+            </div>
           ) : (
             <Route exact path="/">
               {showForm ? (

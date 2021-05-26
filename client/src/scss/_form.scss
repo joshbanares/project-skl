@@ -4,7 +4,7 @@ form {
   width: 100%;
   text-align: center;
 
-  svg:first-child {
+  .close {
     position: relative;
     left: 95px;
     transition: 0.3s;
@@ -13,6 +13,10 @@ form {
     &:hover {
       color: lighten(red, 15%);
     }
+  }
+
+  .submit-loader {
+    color: $blue;
   }
 
   .input input,
@@ -109,24 +113,32 @@ form {
     flex-wrap: wrap;
     cursor: pointer;
 
-    &:hover svg {
-      transform: translateX(5px);
+    &:hover h3::after {
+      width: 100%;
     }
 
-    &:hover h3 {
-      border-bottom: 2px solid $blue;
+    &:hover svg {
+      transform: scale(0);
+    }
+
+    h3::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 3px;
+      background: $blue;
+      transition: width 0.4s ease-in;
     }
 
     h3 {
       margin-right: 5px;
       font-size: 16px;
       transition: 0.3s;
-      border-bottom: 2px solid $ddgray;
     }
 
     svg {
       color: $blue;
-      transition: 0.3s;
+      transition: 0.5s;
     }
   }
 }
