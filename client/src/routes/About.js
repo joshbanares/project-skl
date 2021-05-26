@@ -6,11 +6,13 @@ function About() {
       <div className="about-txt">
         <p>"Share Anything about Anything!"</p>
         <p>
-          The purpose of this project is to allow people to share or rant about
-          anything while staying anonymous or by providing a username.
+          The aim of this project is to enable people to anonymously share or
+          vent about something or anything.
         </p>
 
-        <p>This project is also for learning full-stack development.</p>
+        <p>
+          This project also serves as a way to learn full-stack development.{' '}
+        </p>
 
         <p>Created by Josh Daniel Bañares.</p>
       </div>
