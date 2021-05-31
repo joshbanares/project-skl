@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import CloseIcon from '@material-ui/icons/Close';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Form from './components/Form';
@@ -15,6 +17,59 @@ function App() {
   const [post, setPost] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [sharing, setSharing] = useState(false);
+  const [showDp, setShowDp] = useState(false);
+
+  const DeletePopUp = styled.div`
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    position: fixed;
+    padding: 40px;
+    z-index: 99;
+    display: grid;
+    place-items: center;
+    left: 50%;
+    top: 50%;
+    height: 100px;
+    transform: translate(-50%, -50%);
+
+    input,
+    button {
+      position: relative;
+      top: -90px;
+      margin-bottom: 20px;
+      outline: none;
+      border: none;
+    }
+
+    input {
+      border-radius: 8px;
+      padding: 5px;
+    }
+
+    svg {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      transition: 0.3s;
+      cursor: pointer;
+
+      &:hover {
+        color: #7289da;
+      }
+    }
+
+    button {
+      border-radius: 3px;
+      padding: 3px 8px;
+      background: #7289da;
+      color: white;
+      cursor: pointer;
+    }
+  `;
 
   const getSharedPost = () => {
     axios
@@ -72,6 +127,18 @@ function App() {
     <Router>
       <main>
         <Navbar />
+        {showDp && (
+          <DeletePopUp>
+            <CloseIcon
+              style={{ fontSize: 20 }}
+              onClick={() => setShowDp(false)}
+            />
+            <form>
+              <input type="password" placeholder="password" /> <br />
+              <button onClick={(e) => e.preventDefault()}>Delete Post</button>
+            </form>
+          </DeletePopUp>
+        )}
         <Switch>
           {isLoading ? (
             <div className="loader">
@@ -94,7 +161,7 @@ function App() {
               ) : (
                 <ToggleForm setShowForm={setShowForm} />
               )}
-              <Posts sharedPost={sharedPost} />
+              <Posts sharedPost={sharedPost} setShowDp={setShowDp} />
             </Route>
           )}
 

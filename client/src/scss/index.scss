@@ -9,9 +9,12 @@
   display: none;
 }
 
+* {
+  font-family: 'Ubuntu Mono', monospace;
+}
+
 body {
   @include bg;
-  font-family: 'Ubuntu Mono', monospace;
   color: #f9f9f9;
   display: grid;
   place-items: center;

@@ -14,6 +14,8 @@ function About() {
           This project also serves as a way to learn full-stack development.{' '}
         </p>
 
+        <p>Version: 1.0.1</p>
+
         <p>Created by Josh Daniel Bañares.</p>
       </div>
       <Link to="/">go back</Link>
