@@ -1,9 +1,8 @@
-import { motion, AnimatePresence } from 'framer-motion';
 import SendIcon from '@material-ui/icons/Send';
 
 function ToggleForm({ setShowForm, showForm }) {
   return (
-    <AnimatePresence>
+    <>
       {!showForm && (
         <div className="share-something">
           <div className="share" onClick={() => setShowForm(true)}>
@@ -12,7 +11,7 @@ function ToggleForm({ setShowForm, showForm }) {
           </div>
         </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }
 
