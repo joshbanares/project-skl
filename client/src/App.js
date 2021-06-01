@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import axios from 'axios';
 import styled from 'styled-components';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import CloseIcon from '@material-ui/icons/Close';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Form from './components/Form';
 import Posts from './components/Posts';
@@ -19,6 +20,29 @@ function App() {
   const [sharing, setSharing] = useState(false);
   const [showDp, setShowDp] = useState(false);
 
+  const myVariant = {
+    hide: {
+      scale: 0,
+      x: '-50%',
+    },
+
+    show: {
+      scale: 1,
+      x: '-50%',
+    },
+
+    exit: {
+      scale: 0,
+      x: '-50%',
+    },
+
+    transition: {
+      type: 'spring',
+      stiffness: 260,
+      damping: 20,
+    },
+  };
+
   const DeletePopUp = styled.div`
     background: rgba(255, 255, 255, 0.25);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -27,14 +51,13 @@ function App() {
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     position: fixed;
+    top: 50%;
+    left: 50%;
     padding: 40px;
     z-index: 99;
     display: grid;
     place-items: center;
-    left: 50%;
-    top: 50%;
     height: 100px;
-    transform: translate(-50%, -50%);
 
     input,
     button {
@@ -127,18 +150,27 @@ function App() {
     <Router>
       <main>
         <Navbar />
-        {showDp && (
-          <DeletePopUp>
-            <CloseIcon
-              style={{ fontSize: 20 }}
-              onClick={() => setShowDp(false)}
-            />
-            <form>
-              <input type="password" placeholder="password" /> <br />
-              <button onClick={(e) => e.preventDefault()}>Delete Post</button>
-            </form>
-          </DeletePopUp>
-        )}
+        <AnimatePresence>
+          {showDp && (
+            <DeletePopUp
+              as={motion.div}
+              variants={myVariant}
+              initial="hide"
+              animate="show"
+              exit="exit"
+              transition="transition"
+            >
+              <CloseIcon
+                style={{ fontSize: 20 }}
+                onClick={() => setShowDp(false)}
+              />
+              <form>
+                <input type="password" placeholder="password" /> <br />
+                <button onClick={(e) => e.preventDefault()}>Delete Post</button>
+              </form>
+            </DeletePopUp>
+          )}
+        </AnimatePresence>
         <Switch>
           {isLoading ? (
             <div className="loader">
@@ -147,20 +179,22 @@ function App() {
             </div>
           ) : (
             <Route exact path="/">
-              {showForm ? (
-                <Form
-                  setShowForm={setShowForm}
-                  setUsername={setUsername}
-                  setPost={setPost}
-                  username={username}
-                  post={post}
-                  submit={submit}
-                  sharing={sharing}
-                  setSharing={setSharing}
-                />
-              ) : (
-                <ToggleForm setShowForm={setShowForm} />
-              )}
+              <Form
+                setShowForm={setShowForm}
+                setUsername={setUsername}
+                setPost={setPost}
+                username={username}
+                post={post}
+                submit={submit}
+                sharing={sharing}
+                setSharing={setSharing}
+                showForm={showForm}
+              />
+              <ToggleForm
+                setShowForm={setShowForm}
+                showForm={showForm}
+                myVariant={myVariant}
+              />
               <Posts sharedPost={sharedPost} setShowDp={setShowDp} />
             </Route>
           )}

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
@@ -6,17 +7,25 @@ function Navbar() {
       <h1>Project:SKL Beta!</h1>
       <h3>Copyright © 2021 88XFi Websites All Rights Reserved.</h3>
       <div className="navigation">
-        <Link to="/about">about</Link>
-        <a href="https://xfi.sytes.net" rel="author noreferrer" target="_blank">
+        <motion.a whileHover={{ rotate: 360 }}>
+          <Link to="/about">about</Link>
+        </motion.a>
+        <motion.a
+          whileHover={{ rotate: 360 }}
+          href="https://xfi.sytes.net"
+          rel="author noreferrer"
+          target="_blank"
+        >
           portfolio
-        </a>
-        <a
+        </motion.a>
+        <motion.a
+          whileHover={{ rotate: 360 }}
           href="https://github.com/joshbanares/project-skl"
           rel="author noreferrer"
           target="_blank"
         >
           github
-        </a>
+        </motion.a>
       </div>
     </nav>
   );
