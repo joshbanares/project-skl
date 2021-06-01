@@ -24,9 +24,10 @@ nav {
   justify-content: space-evenly;
   width: 100%;
   position: relative;
-  bottom: 30px;
+  bottom: 25px;
   background: blueify(15);
   padding: 10px;
+  overflow: hidden;
 
   a {
     cursor: pointer;
