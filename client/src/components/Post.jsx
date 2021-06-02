@@ -1,15 +1,9 @@
-import { motion } from 'framer-motion';
-import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
+// import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 
-function Post({ post, setShowDp }) {
+function Post({ post }) {
   return (
     <div className="post">
-      <DeleteForeverIcon
-        as={motion.svg}
-        animate={{ rotate: 360 }}
-        style={{ fontSize: 18 }}
-        onClick={() => setShowDp(true)}
-      />
+      {/* <DeleteForeverIcon style={{ fontSize: 18 }} /> */}
       <h4>{post.username}</h4>
       <p>{post.userPost}</p>
       <p>{post.date}</p>

@@ -146,6 +146,10 @@ function App() {
     setPost('');
   };
 
+  const scrollUp = () => {
+    window.scrollTo(0, 0);
+  };
+
   return (
     <Router>
       <main>
@@ -191,6 +195,7 @@ function App() {
                 showForm={showForm}
               />
               <ToggleForm
+                onClick={() => scrollUp()}
                 setShowForm={setShowForm}
                 showForm={showForm}
                 myVariant={myVariant}
